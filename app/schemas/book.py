@@ -1,22 +1,34 @@
-from pydantic import BaseModel
-from typing import Optional
+from datetime import datetime
+
+from pydantic import BaseModel, ConfigDict, Field
 
 
-class BookCreate(BaseModel):
-    """Схема для создания новой книги"""
-    title: str
-    author: str
-    year: Optional[int] = None
-    genre: Optional[str] = None
+class BookBase(BaseModel):
+    title: str = Field(..., min_length=1, max_length=255)
+    author: str = Field(..., min_length=1, max_length=255)
+    genre: str | None = Field(default=None, max_length=100)
+    year: int | None = Field(default=None, ge=0, le=2100)
+    description: str | None = None
+    copies_total: int = Field(default=1, ge=0)
 
 
-class BookRead(BaseModel):
-    """Схема ответа (включает ID, который генерирует сервер)"""
+class BookCreate(BookBase):
+    pass
+
+
+class BookUpdate(BaseModel):
+    title: str | None = Field(default=None, min_length=1, max_length=255)
+    author: str | None = Field(default=None, min_length=1, max_length=255)
+    genre: str | None = Field(default=None, max_length=100)
+    year: int | None = Field(default=None, ge=0, le=2100)
+    description: str | None = None
+    copies_total: int | None = Field(default=None, ge=0)
+
+
+class BookRead(BookBase):
     id: int
-    title: str
-    author: str
-    year: Optional[int] = None
-    genre: Optional[str] = None
+    copies_available: int
+    created_at: datetime
+    updated_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
