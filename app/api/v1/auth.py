@@ -18,7 +18,7 @@ async def register(data: UserCreate, session: SessionDep):
 @router.post("/login", response_model=Token)
 async def login(session: SessionDep, form_data: OAuth2PasswordRequestForm = Depends()):
     repo = UserRepository(session)
-    user = await repo.get_by_email(form_data.username) # username здесь это email
+    user = await repo.get_by_email(form_data.username)
     if not user or not verify_password(form_data.password, user.hashed_password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,

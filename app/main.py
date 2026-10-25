@@ -26,11 +26,12 @@ app = FastAPI(
     title=settings.app_name,
     version="1.0.0",
     lifespan=lifespan,
+    debug=True
 )
 
 # Подключаем глобальные обработчики ошибок
-app.add_exception_handler(StarletteHTTPException, http_exception_handler)
-app.add_exception_handler(RequestValidationError, validation_exception_handler)
+#app.add_exception_handler(StarletteHTTPException, http_exception_handler)
+#app.add_exception_handler(RequestValidationError, validation_exception_handler)
 
 # Подключаем все роутеры с общим префиксом /api/v1
 app.include_router(books_router, prefix="/api/v1")

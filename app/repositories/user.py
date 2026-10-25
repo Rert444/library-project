@@ -4,6 +4,7 @@ from app.models.user import User
 from app.schemas.user import UserCreate
 from app.core.security import get_password_hash
 
+
 class UserRepository:
     def __init__(self, session: AsyncSession):
         self.session = session
