@@ -3,8 +3,9 @@ from fastapi import FastAPI
 
 # Импортируем все роутеры
 from app.api.v1.book import router as books_router
-from app.api.v1.auth import router as auth_router     # НОВОЕ
-from app.api.v1.users import router as users_router   # НОВОЕ
+from app.api.v1.auth import router as auth_router
+from app.api.v1.users import router as users_router
+from app.api.v1.attachments import router as attachments_router  # НОВОЕ
 
 from app.core.config import settings
 from app.db.session import engine
@@ -24,8 +25,9 @@ app = FastAPI(
 
 # Подключаем все роутеры с общим префиксом /api/v1
 app.include_router(books_router, prefix="/api/v1")
-app.include_router(auth_router, prefix="/api/v1")     # НОВОЕ
-app.include_router(users_router, prefix="/api/v1")    # НОВОЕ
+app.include_router(auth_router, prefix="/api/v1")
+app.include_router(users_router, prefix="/api/v1")
+app.include_router(attachments_router, prefix="/api/v1")  # НОВОЕ
 
 @app.get("/")
 def root():
