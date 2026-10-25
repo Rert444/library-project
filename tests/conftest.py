@@ -1,13 +1,12 @@
-import pytest
-import pytest_asyncio
 from typing import AsyncGenerator
-from httpx import AsyncClient, ASGITransport
-from sqlalchemy.ext.asyncio import create_async_engine, async_sessionmaker, AsyncSession
 
-from app.main import app as fastapi_app
+import pytest_asyncio
+from httpx import ASGITransport, AsyncClient
+from sqlalchemy.ext.asyncio import AsyncSession, async_sessionmaker, create_async_engine
+
 from app.db.base import Base
 from app.db.session import get_session
-import app.models # Важно для регистрации моделей в Base.metadata
+from app.main import app as fastapi_app
 
 # Используем SQLite в оперативной памяти для тестов (быстро и чисто)
 TEST_DATABASE_URL = "sqlite+aiosqlite:///:memory:"

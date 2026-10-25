@@ -1,18 +1,16 @@
 from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
-from fastapi.exceptions import RequestValidationError
-from starlette.exceptions import HTTPException as StarletteHTTPException
+
+from app.api.v1.attachments import router as attachments_router
+from app.api.v1.auth import router as auth_router
 
 # Импортируем все роутеры
 from app.api.v1.book import router as books_router
-from app.api.v1.auth import router as auth_router
 from app.api.v1.users import router as users_router
-from app.api.v1.attachments import router as attachments_router
-
 from app.core.config import settings
-from app.db.session import engine
 from app.core.logging import setup_logging
-from app.core.exceptions import http_exception_handler, validation_exception_handler
+from app.db.session import engine
 
 # Включаем логирование
 setup_logging()

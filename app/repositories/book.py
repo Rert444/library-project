@@ -1,6 +1,7 @@
-from sqlalchemy import select, func
-from sqlalchemy.orm import selectinload
+from sqlalchemy import func, select
 from sqlalchemy.ext.asyncio import AsyncSession
+from sqlalchemy.orm import selectinload
+
 from app.models.book import Book
 from app.schemas.book import BookCreate, BookUpdate
 

@@ -1,5 +1,7 @@
 from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.models.attachment import Attachment
+
 
 class AttachmentRepository:
     def __init__(self, session: AsyncSession) -> None:

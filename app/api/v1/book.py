@@ -1,6 +1,7 @@
-from fastapi import APIRouter, status, Query
-from app.api.deps import BookRepoDep, CurrentUserDep, BookServiceDep
-from app.schemas.book import BookCreate, BookRead, BookUpdate, BookList
+from fastapi import APIRouter, Query, status
+
+from app.api.deps import BookRepoDep, BookServiceDep, CurrentUserDep
+from app.schemas.book import BookCreate, BookList, BookRead, BookUpdate
 
 router = APIRouter(prefix="/books", tags=["books"])
 

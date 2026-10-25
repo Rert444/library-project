@@ -5,16 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4de2576d-a86c-47ce-952e-5199c4fb4795" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/OCHET.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dockerfile" beforeDir="false" afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/v1/attachments.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/v1/attachments.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/api/v1/auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/v1/auth.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/core/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/v1/book.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/v1/book.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/v1/comments.py" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/v1/projects.py" beforeDir="false" afterPath="$PROJECT_DIR$/ruff.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/v1/tasks.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/v1/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/v1/users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/exceptions.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/exceptions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/logging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/security.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/security.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/core/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/core/tasks.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/attachment.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/attachment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/author.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/author.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/book.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/book.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/comment.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/project.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/tag.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/task.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repositories/attachment.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/attachment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/repositories/book.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/book.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/repositories/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/repositories/user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/library.db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/attachment.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/attachment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/author.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/author.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/book.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/book.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/comment.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/project.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/task.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/schemas/user.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/schemas/user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/services/book.py" beforeDir="false" afterPath="$PROJECT_DIR$/app/services/book.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/env.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/114180842fa0_add_attachments_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/versions/114180842fa0_add_attachments_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/a7539e07a57c_add_authors_table_and_relation.py" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/versions/a7539e07a57c_add_authors_table_and_relation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/a7a238cc4bb6_create_books_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/versions/a7a238cc4bb6_create_books_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/versions/e1dccccd1b3d_add_users_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/migrations/versions/e1dccccd1b3d_add_users_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_auth.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_auth.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +77,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "lab-09-docker",
+    "git-widget-placeholder": "lab-10-cicd",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/Ростислав/library-project"
   }

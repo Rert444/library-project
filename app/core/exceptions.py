@@ -1,7 +1,8 @@
 from fastapi import Request, status
-from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
 from starlette.exceptions import HTTPException as StarletteHTTPException
+
 
 # Единый обработчик для всех HTTP-ошибок (404, 403, 401 и т.д.)
 async def http_exception_handler(request: Request, exc: StarletteHTTPException):

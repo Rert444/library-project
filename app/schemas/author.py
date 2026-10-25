@@ -1,5 +1,6 @@
 from pydantic import BaseModel, ConfigDict
 
+
 class AuthorBase(BaseModel):
     name: str
     bio: str | None = None

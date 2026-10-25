@@ -1,5 +1,6 @@
 from httpx import AsyncClient
 
+
 async def test_register_user(client: AsyncClient):
     response = await client.post("/api/v1/auth/register", json={
         "email": "newuser@test.com", "password": "secret123", "role": "user"

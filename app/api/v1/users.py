@@ -1,4 +1,5 @@
 from fastapi import APIRouter
+
 from app.api.deps import CurrentUserDep
 from app.schemas.user import UserRead
 

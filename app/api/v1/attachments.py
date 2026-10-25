@@ -1,11 +1,13 @@
 import os
 import shutil
 import uuid
-from fastapi import APIRouter, UploadFile, File, HTTPException, BackgroundTasks, status
-from app.api.deps import SessionDep, CurrentUserDep
+
+from fastapi import APIRouter, BackgroundTasks, File, HTTPException, UploadFile, status
+
+from app.api.deps import CurrentUserDep, SessionDep
+from app.core.tasks import log_file_upload
 from app.repositories.attachment import AttachmentRepository
 from app.schemas.attachment import AttachmentRead
-from app.core.tasks import log_file_upload
 
 router = APIRouter(prefix="/attachments", tags=["attachments"])
 

@@ -1,7 +1,9 @@
 # app/models/book.py
 from datetime import datetime
-from sqlalchemy import DateTime, Integer, String, Text, func, Boolean, ForeignKey
+
+from sqlalchemy import Boolean, DateTime, ForeignKey, Integer, String, Text, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from app.db.base import Base
 
 
@@ -29,4 +31,4 @@ class Book(Base):
     )
 
     # Связь: книга принадлежит одному автору
-    author: Mapped["Author"] = relationship(back_populates="books")
+    author: Mapped["Author"] = relationship(back_populates="books")  # noqa: F821

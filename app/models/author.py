@@ -1,6 +1,8 @@
 from datetime import datetime
+
 from sqlalchemy import DateTime, Integer, String, func
 from sqlalchemy.orm import Mapped, mapped_column, relationship
+
 from app.db.base import Base
 
 
@@ -16,4 +18,4 @@ class Author(Base):
     )
 
     # Связь: у одного автора много книг
-    books: Mapped[list["Book"]] = relationship(back_populates="author")
+    books: Mapped[list["Book"]] = relationship(back_populates="author")  # noqa: F821
