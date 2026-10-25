@@ -1,17 +1,17 @@
-from fastapi import APIRouter, HTTPException, status, Query
-from app.api.deps import BookRepoDep, CurrentUserDep  # ДОБАВИЛИ CurrentUserDep
+from fastapi import APIRouter, status, Query
+from app.api.deps import BookRepoDep, CurrentUserDep, BookServiceDep
 from app.schemas.book import BookCreate, BookRead, BookUpdate, BookList
 
 router = APIRouter(prefix="/books", tags=["books"])
 
-
-# ВРЕМЕННЫЙ МАРШРУТ ДЛЯ АВТОРОВ (теперь защищен)
+# ВРЕМЕННЫЙ МАРШРУТ ДЛЯ АВТОРОВ (пока оставляем как есть, так как для него нет сервиса)
 @router.post("/authors/", tags=["authors"])
 async def create_author_test(
         name: str,
         repo: BookRepoDep,
-        current_user: CurrentUserDep  # Защита
+        current_user: CurrentUserDep
 ):
+    from fastapi import HTTPException
     if current_user.role not in ["admin", "manager"]:
         raise HTTPException(status_code=403, detail="Not enough permissions")
 
@@ -25,7 +25,7 @@ async def create_author_test(
 
 @router.get("/", response_model=BookList)
 async def list_books(
-        repo: BookRepoDep,
+        service: BookServiceDep,
         page: int = Query(1, ge=1),
         size: int = Query(10, ge=1, le=100),
         sort_by: str = Query("id"),
@@ -33,60 +33,40 @@ async def list_books(
         genre: str | None = Query(None),
         is_archived: bool | None = Query(None),
 ):
-    return await repo.list(page=page, size=size, sort_by=sort_by, order=order, genre=genre, is_archived=is_archived)
+    return await service.get_all(
+        page=page, size=size, sort_by=sort_by,
+        order=order, genre=genre, is_archived=is_archived
+    )
 
 
 @router.get("/{book_id}", response_model=BookRead)
-async def get_book(book_id: int, repo: BookRepoDep) -> BookRead:
-    book = await repo.get(book_id)
-    if book is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Book not found")
-    return book
+async def get_book(book_id: int, service: BookServiceDep) -> BookRead:
+    return await service.get_by_id(book_id)
 
 
-# ЗАЩИЩАЕМ СОЗДАНИЕ КНИГИ
 @router.post("/", response_model=BookRead, status_code=status.HTTP_201_CREATED)
 async def create_book(
         data: BookCreate,
-        repo: BookRepoDep,
-        current_user: CurrentUserDep  # Только авторизованные
+        service: BookServiceDep,
+        current_user: CurrentUserDep
 ) -> BookRead:
-    if current_user.role not in ["admin", "manager"]:
-        raise HTTPException(status_code=403, detail="Not enough permissions")
-    return await repo.create(data)
+    return await service.create(data, current_user.role)
 
 
-# ЗАЩИЩАЕМ ОБНОВЛЕНИЕ КНИГИ
 @router.put("/{book_id}", response_model=BookRead)
 async def update_book(
         book_id: int,
         data: BookUpdate,
-        repo: BookRepoDep,
-        current_user: CurrentUserDep  # Только авторизованные
+        service: BookServiceDep,
+        current_user: CurrentUserDep
 ) -> BookRead:
-    if current_user.role not in ["admin", "manager"]:
-        raise HTTPException(status_code=403, detail="Not enough permissions")
-
-    book = await repo.get(book_id)
-    if book is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Book not found")
-    try:
-        return await repo.update(book, data)
-    except ValueError as exc:
-        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+    return await service.update(book_id, data, current_user.role)
 
 
-# ЗАЩИЩАЕМ УДАЛЕНИЕ КНИГИ
 @router.delete("/{book_id}", status_code=status.HTTP_204_NO_CONTENT)
 async def delete_book(
         book_id: int,
-        repo: BookRepoDep,
-        current_user: CurrentUserDep  # Только авторизованные
+        service: BookServiceDep,
+        current_user: CurrentUserDep
 ) -> None:
-    if current_user.role not in ["admin", "manager"]:
-        raise HTTPException(status_code=403, detail="Not enough permissions")
-
-    book = await repo.get(book_id)
-    if book is None:
-        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Book not found")
-    await repo.delete(book)
+    await service.delete(book_id, current_user.role)
